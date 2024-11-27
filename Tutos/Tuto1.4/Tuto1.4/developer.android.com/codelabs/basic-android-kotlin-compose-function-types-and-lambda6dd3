@@ -1,0 +1,2248 @@
+<!doctype html>
+<html 
+      lang="pt-BR"
+      dir="ltr">
+  
+<!-- Mirrored from developer.android.com/codelabs/basic-android-kotlin-compose-function-types-and-lambda?hl=pt-br by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Oct 2024 10:03:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope"
+          content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award">
+    <meta property="og:site_name" content="Android Developers">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#34a853"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="https://developer.android.com/_pwa/android/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="http://www.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="http://fonts.googleapis.com/" crossorigin>
+    <link rel="preconnect" href="http://apis.google.com/" crossorigin>
+    <link rel="preconnect" href="http://www.google-analytics.com/" crossorigin><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700|Google+Sans+Text:400,400italic,500,500italic,600,600italic,700,700italic|Roboto+Mono:400,500,700&amp;display=swap">
+      <link rel="stylesheet"
+            href="http://fonts.googleapis.com/css2?family=Material+Icons&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block"><link rel="stylesheet" href="../../www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/css/app.css">
+      
+        <link rel="stylesheet" href="../../www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/css/dark-theme.css" disabled>
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/favicon.svg">
+    <link rel="apple-touch-icon" href="../../www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/touchicon-180.png"><link rel="canonical" href="basic-android-kotlin-compose-function-types-and-lambda6dd3?hl=pt-br"><link rel="search" type="application/opensearchdescription+xml"
+            title="Android Developers" href="https://developer.android.com/s/opensearch.xml?hl=pt-br">
+      <link rel="alternate" hreflang="en"
+          href="basic-android-kotlin-compose-function-types-and-lambda.html" /><link rel="alternate" hreflang="x-default" href="basic-android-kotlin-compose-function-types-and-lambda.html" /><link rel="alternate" hreflang="zh-Hans"
+          href="basic-android-kotlin-compose-function-types-and-lambda0b8e.html?hl=zh-cn" /><link rel="alternate" hreflang="zh-Hant"
+          href="basic-android-kotlin-compose-function-types-and-lambdaf854.html?hl=zh-tw" /><link rel="alternate" hreflang="fr"
+          href="basic-android-kotlin-compose-function-types-and-lambda7d7c.html?hl=fr" /><link rel="alternate" hreflang="id"
+          href="basic-android-kotlin-compose-function-types-and-lambda0cf2.html?hl=id" /><link rel="alternate" hreflang="ja"
+          href="basic-android-kotlin-compose-function-types-and-lambda9e29.html?hl=ja" /><link rel="alternate" hreflang="ko"
+          href="basic-android-kotlin-compose-function-types-and-lambda232e.html?hl=ko" /><link rel="alternate" hreflang="pt-BR"
+          href="basic-android-kotlin-compose-function-types-and-lambda6dd3?hl=pt-br" /><link rel="alternate" hreflang="es-419"
+          href="basic-android-kotlin-compose-function-types-and-lambda7554?hl=es-419" /><link rel="alternate" hreflang="vi"
+          href="basic-android-kotlin-compose-function-types-and-lambda327f?hl=vi" /><title>Usar tipos de função e expressões lambda no Kotlin &nbsp;|&nbsp; Android Developers</title>
+
+<meta property="og:title" content="Usar tipos de função e expressões lambda no Kotlin &nbsp;|&nbsp; Android Developers"><meta name="description" content="Aprenda a usar expressões lambda e funções de ordem superior no Kotlin.">
+  <meta property="og:description" content="Aprenda a usar expressões lambda e funções de ordem superior no Kotlin."><meta property="og:url" content="basic-android-kotlin-compose-function-types-and-lambda6dd3?hl=pt-br"><meta property="og:locale" content="pt_br">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    
+    
+    
+    
+    
+    
+    
+    
+  
+
+    
+      <link rel="stylesheet" href="../extras.css"></head>
+  <body class=""
+        template="codelab"
+        theme="android-theme"
+        type="codelab"
+        
+        
+        appearance
+        layout="docs"
+        
+        
+        
+        
+        display-toc
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+  
+    <section class="devsite-wrapper">
+      
+      <devsite-cookie-notification-bar></devsite-cookie-notification-bar>
+      <devsite-header role="banner">
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner nocontent">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Abrir menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+
+  <a href="https://developer.android.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav"
+   track-name="androidDevelopers" track-metadata-position="nav"
+   track-metadata-eventDetail="nav">
+  
+  <picture>
+    
+    <source srcset="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup-dark-theme.svg"
+            media="(prefers-color-scheme: dark)"
+            class="devsite-dark-theme"
+            alt="Android Developers">
+    
+    <img src="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup.svg" class="devsite-site-logo" alt="Android Developers">
+  </picture>
+  
+</a>
+
+
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+           </div>
+          
+<devsite-search
+    enable-signin
+    enable-search
+    enable-suggestions
+      enable-query-completion
+    
+    
+    
+    tenant-name="Android Developers"
+    
+    
+    
+    
+    
+    >
+  <form class="devsite-search-form" action="https://developer.android.com/s/results?hl=pt-br" method="GET">
+    <div class="devsite-search-container">
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              
+              aria-label="Abrir pesquisa"></button>
+      <div class="devsite-searchbox">
+        <input
+          aria-activedescendant=""
+          aria-autocomplete="list"
+          
+          aria-label="Pesquisa"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          autocomplete="off"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          
+          placeholder="Pesquisa"
+          role="combobox"
+          type="text"
+          value=""
+          >
+          <div class="devsite-search-image material-icons" aria-hidden="true">
+            
+          </div>
+          <div class="devsite-search-shortcut-icon-container" aria-hidden="true">
+            <kbd class="devsite-search-shortcut-icon">/</kbd>
+          </div>
+      </div>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          
+          aria-label="Fechar pesquisa"></button>
+</devsite-search>
+
+        </div>
+
+        
+
+        
+
+        <devsite-appearance-selector></devsite-appearance-selector>
+
+        
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+
+        
+          
+  <a class="devsite-header-link devsite-top-button button gc-analytics-event"
+     href="https://developer.android.com/studio?hl=pt-br"
+     data-category="Site-Wide Custom Events"
+     data-label="Site header link"
+     >
+    Android Studio
+  </a>
+  
+        
+
+        
+          
+          
+          <devsite-user 
+                        
+                        
+                          enable-profiles
+                        
+                        
+                        id="devsite-user">
+            
+              
+              <span class="button devsite-top-button" aria-hidden="true" visually-hidden>Fazer login</span>
+            
+        </devsite-user>
+           
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+  
+</devsite-header>
+      <devsite-book-nav scrollbars hidden>
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter"
+     hidden>
+  <span class="filter-list-icon material-icons" aria-hidden="true"></span>
+  <input type="text"
+         placeholder="Filtrar"
+         
+         aria-label="Digite para filtrar"
+         role="searchbox">
+  
+  <span class="filter-clear-button hidden"
+        data-title="Limpar filtro"
+        aria-label="Limpar filtro"
+        role="button"
+        tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent"
+     aria-label="Menu lateral">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Fechar navegação">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  <a href="https://developer.android.com/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav"
+   track-name="androidDevelopers" track-metadata-position="nav"
+   track-metadata-eventDetail="nav">
+  
+  <picture>
+    
+    <source srcset="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup-dark-theme.svg"
+            media="(prefers-color-scheme: dark)"
+            class="devsite-dark-theme"
+            alt="Android Developers">
+    
+    <img src="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup.svg" class="devsite-site-logo" alt="Android Developers">
+  </picture>
+  
+</a>
+
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+          
+    
+<li class="devsite-nav-item">
+
+  
+  <a href="https://developer.android.com/studio"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Android Studio"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Android Studio
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+  
+          
+        </ul>
+      
+    </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav>
+      <section id="gc-wrapper">
+        <main role="main" class="devsite-main-content"
+            
+              
+              has-sidebar
+            >
+          
+          
+          <div class="devsite-sidebar">
+            <div class="devsite-sidebar-content">
+                
+                <devsite-toc class="devsite-nav"
+                            role="navigation"
+                            aria-label="Nesta página"
+                            depth="1"
+                            scrollbars
+                  ></devsite-toc>
+                <devsite-recommendations-sidebar class="nocontent devsite-nav">
+                </devsite-recommendations-sidebar>
+            </div>
+          </div>
+          
+          <devsite-content>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article"><style>
+      body {
+        transition: opacity ease-in 0.2s;
+      }
+
+      body[unresolved] {
+        opacity: 0;
+        display: block;
+        overflow: hidden;
+        position: relative;
+      }
+      </style>
+  
+  
+  
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list"
+  >
+  
+</ul>
+    
+  </div>
+  
+    <h1 class="devsite-page-title" tabindex="-1">
+      Usar tipos de função e expressões lambda no Kotlin
+      
+    </h1>
+  <devsite-feature-tooltip
+      ack-key="AckCollectionsBookmarkTooltipDismiss"
+      analytics-category="Site-Wide Custom Events"
+      analytics-action-show="Callout Profile displayed"
+      analytics-action-close="Callout Profile dismissed"
+      analytics-label="Create Collection Callout"
+      class="devsite-page-bookmark-tooltip nocontent"
+      dismiss-button="true"
+      id="devsite-collections-dropdown"
+      
+      dismiss-button-text="Dispensar"
+
+      
+      close-button-text="Ok">
+
+    
+    <devsite-bookmark></devsite-bookmark>
+
+    <span slot="popout-heading">
+      
+      Mantenha tudo organizado com as coleções
+    </span>
+    <span slot="popout-contents">
+      
+      Salve e categorize o conteúdo com base nas suas preferências.
+    </span>
+  </devsite-feature-tooltip>
+  
+
+  <devsite-toc class="devsite-nav"
+    depth="1"
+    devsite-toc-embedded
+    >
+  </devsite-toc>
+  
+    
+  
+
+  
+
+
+
+
+
+
+<div class="devsite-article-body clearfix
+  ">
+
+  
+    
+
+    <google-codelab-analytics gaid="UA-49880327-14" ga4id="G-JTFZSJVVVZ"></google-codelab-analytics>
+    <google-codelab codelab-gaid="UA-81734179-1" codelab-ga4id doc-id="1t2Ojwg8urovViVFjODIXorAGB_S8ZcUs_1y0EH5Gc38" id="basic-android-kotlin-compose-function-types-and-lambda" title="Usar tipos de função e expressões lambda no Kotlin" no-tooltip environment="web" category feedback-link="https://github.com/google-developer-training/basic-android-kotlin-compose-training-dice-roller/issues/new?assignees=&amp;labels=&amp;template=use-function-types-and-lambda-expressions-in-kotlin-issue-template.md&amp;title=Use&#43;function&#43;types&#43;and&#43;lambda&#43;expressions&#43;in&#43;Kotlin%3A&#43;Android&#43;Basics&#43;with&#43;Compose" layout="paginated">
+
+        <google-codelab-step label="Introdução" duration="0" step="0">
+
+            <google-codelab-about codelab-title="Usar tipos de função e expressões lambda no Kotlin" authors="Equipe de treinamento do Google Developers" last-updated="2023-09-21T19:59:23Z">
+            </google-codelab-about>
+
+          <h2 class="step-title" id="0" data-text="Introdução" tabindex="-1">
+              1. Introdução
+          </h2>
+          <p>Este codelab ensina sobre os tipos de função, como eles podem ser usados e a sintaxe específica para expressões lambda.</p>
+<p>No Kotlin, as funções são consideradas construções de primeira classe. Isso significa que as funções podem ser tratadas como um tipo de dado. Você pode armazenar funções em variáveis, fazer a transmissão delas para outras funções como argumentos e retornar essas funções.</p>
+<p>Assim como outros tipos de dados que você pode expressar com valores literais, como um tipo <code translate="no" dir="ltr">Int</code> de valor <code translate="no" dir="ltr">10</code> e um tipo <code translate="no" dir="ltr">String</code> de valor <code translate="no" dir="ltr">"Hello"</code>, também é possível declarar literais de função, que são chamados de expressões lambda ou lambdas. Expressões lambda são usadas extensivamente no desenvolvimento Android e, de forma geral, na programação em Kotlin.</p>
+<h2 is-upgraded id="prerequisites" data-text="Pré-requisitos" tabindex="-1">Pré-requisitos</h2>
+<ul>
+<li>Familiaridade com a programação em Kotlin, incluindo funções, instruções <code translate="no" dir="ltr">if/else</code> e nulidade.</li>
+</ul>
+<h2 class="checklist" is-upgraded id="what-youll-learn" data-text="O que você vai aprender" tabindex="-1">O que você vai aprender</h2>
+<ul class="checklist">
+<li>Como definir uma função com sintaxe de lambda.</li>
+<li>Como armazenar funções em variáveis.</li>
+<li>Como transmitir funções como argumentos para outras funções.</li>
+<li>Como retornar funções de outras funções.</li>
+<li>Como usar tipos de função com nulidade.</li>
+<li>Como deixar as expressões lambda mais concisas.</li>
+<li>O que é uma função de ordem superior.</li>
+<li>Como usar a função <code translate="no" dir="ltr">repeat()</code>.</li>
+</ul>
+<h2 is-upgraded id="what-youll-need" data-text="O que é necessário" tabindex="-1">O que é necessário</h2>
+<ul>
+<li>Um navegador da Web com acesso ao Playground Kotlin.</li>
+</ul>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Assistir o vídeo de orientações (opcional)" duration="0" step="1">
+
+          <h2 class="step-title" id="1" data-text="Assistir ao vídeo de orientações (opcional)" tabindex="-1">
+              2. Assistir ao vídeo de orientações (opcional)
+          </h2>
+          <p>Se você quiser acompanhar a conclusão deste codelab por um dos instrutores do curso, assista ao vídeo abaixo.</p>
+<p>Recomendamos abrir o vídeo em tela cheia usando o ícone <img alt="Símbolo com quatro cantos destacados em um quadrado para indicar o modo de tela cheia." style="width: 28.80px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/d009d08384447d4c_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"> no canto do vídeo. Assim, você possa conferir o Playground Kotlin e o código com maior clareza.</p>
+<p>Esta etapa é opcional. Você pode pular o vídeo e começar a seguir as instruções do codelab.</p>
+<devsite-youtube video-id="nG0e9OjVGDQ"></devsite-youtube>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Armazenar uma função em uma variável" duration="0" step="2">
+
+          <h2 class="step-title" id="2" data-text="Armazenar uma função em uma variável" tabindex="-1">
+              3. Armazenar uma função em uma variável
+          </h2>
+          <p>Até agora, você aprendeu a declarar funções com a palavra-chave <code translate="no" dir="ltr">fun</code>. Uma função declarada com <code translate="no" dir="ltr">fun</code> pode ser chamada, o que faz com que o código no corpo dela seja executado.</p>
+<p>Por ser uma construção de primeira classe, as funções também são tipos de dados. Então, você pode armazenar funções em variáveis, fazer a transmissão delas para outras funções e retornar essas funções. Talvez você queira mudar o comportamento de um elemento do app no momento da execução ou aninhar funções de composição para criar layouts, como já feito em codelabs anteriores. Tudo isso é possível com expressões lambda.</p>
+<p>Para explicar melhor, vamos usar a tradição <a href="https://en.wikipedia.org/wiki/Trick-or-treating" target="_blank">doces ou travessuras</a> (link em inglês), que ocorre no Halloween em vários países e na qual crianças fantasiadas pedem doces de porta em porta.</p>
+<p>Armazene uma função em uma variável:</p>
+<ol type="1">
+<li>Acesse o <a href="https://developer.android.com/training/kotlinplayground?hl=pt-br" target="_blank">Kotlin Playground</a>.</li>
+<li>Após a função <code translate="no" dir="ltr">main()</code>, defina uma <code translate="no" dir="ltr">trick()</code> sem parâmetros e sem valor de retorno para mostrar a mensagem <code translate="no" dir="ltr">"No treats!"</code> (Sem doces!). A sintaxe é a mesma de outras funções mostradas em codelabs anteriores.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+
+}
+
+fun trick() {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="3">
+<li>No corpo da função <code translate="no" dir="ltr">main()</code>, crie uma variável chamada <code translate="no" dir="ltr">trickFunction</code> e a defina como igual a <code translate="no" dir="ltr">trick</code> (travessuras). Os parênteses depois de <code translate="no" dir="ltr">trick</code> não são incluídos porque você não quer chamar a função, mas sim que ela seja armazenada em uma variável.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = trick
+}
+
+fun trick() {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Execute o código. Ele gera um erro porque o compilador Kotlin reconhece <code translate="no" dir="ltr">trick</code> como o nome da função <code translate="no" dir="ltr">trick()</code>, mas espera que você chame a função em vez de a atribuir a uma variável.</li>
+</ol>
+<pre translate="no" dir="ltr">Function invocation &#39;trick()&#39; expected
+</pre>
+<p>Você tentou armazenar <code translate="no" dir="ltr">trick</code> na variável <code translate="no" dir="ltr">trickFunction</code>. No entanto, para se referir a uma função como um valor, é necessário usar o operador de referência de função (<code translate="no" dir="ltr">::</code>). A sintaxe é ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="a9a9bfa88485ec67.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec676dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/a9a9bfa88485ec67_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<ol type="1" start="5">
+<li>Para fazer referência à função como um valor, reatribua <code translate="no" dir="ltr">trickFunction</code> a <code translate="no" dir="ltr">::trick</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = ::trick
+}
+
+fun trick() {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="6">
+<li>Execute o código para verificar se não há mais erros. Você vai receber um aviso informando que <code translate="no" dir="ltr">trickFunction</code> não foi usada, mas isso será corrigido na próxima seção.</li>
+</ol>
+<h2 is-upgraded id="redefine-the-function-with-a-lambda-expression" data-text="Redefinir a função com uma expressão lambda" tabindex="-1">Redefinir a função com uma expressão lambda</h2>
+<p>As expressões lambda fornecem uma sintaxe concisa para definir uma função sem a palavra-chave <code translate="no" dir="ltr">fun</code>. Você pode armazenar uma expressão lambda diretamente em uma variável sem uma referência de função em outra função.</p>
+<p>Antes do operador de atribuição (<code translate="no" dir="ltr">=</code>), adicione a palavra-chave <code translate="no" dir="ltr">val</code> ou <code translate="no" dir="ltr">var</code> seguida pelo nome da variável, que é o que você usa ao chamar a função. Depois do operador de atribuição (<code translate="no" dir="ltr">=</code>), está a expressão lambda, que consiste em um par de chaves que formam o corpo da função. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="5e25af769cc200bc.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5e25af769cc200bc_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Ao definir uma função com uma expressão lambda, você tem uma variável que se refere à função. Você também pode atribuir o valor a outras variáveis, como qualquer outro tipo, e chamar a função com o nome da nova variável.</p>
+<p>Atualize o código para usar uma expressão lambda:</p>
+<ol type="1">
+<li>Reprograme a função <code translate="no" dir="ltr">trick()</code> com uma expressão lambda. O nome <code translate="no" dir="ltr">trick</code> agora se refere ao nome de uma variável. O corpo da função nas chaves agora é uma expressão lambda.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = ::trick
+}
+
+val trick = {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Na função <code translate="no" dir="ltr">main()</code>, remova o operador de referência de função (<code translate="no" dir="ltr">::</code>), já que <code translate="no" dir="ltr">trick</code> agora se refere a uma variável em vez de um nome de função.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = trick
+}
+
+val trick = {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Execute o código. Não há erros e você pode referenciar a função <code translate="no" dir="ltr">trick()</code> sem o operador de referência de função (<code translate="no" dir="ltr">::</code>). Não há saída porque você ainda não chamou a função.</li>
+<li>Na função <code translate="no" dir="ltr">main()</code>, chame a <code translate="no" dir="ltr">trick()</code>, mas agora inclua os parênteses, como faria ao chamar qualquer outra função.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = trick
+    trick()
+}
+
+val trick = {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="5">
+<li>Execute o código. O corpo da expressão lambda é executado.</li>
+</ol>
+<pre translate="no" dir="ltr">No treats!
+</pre>
+<ol type="1" start="6">
+<li>Na função <code translate="no" dir="ltr">main()</code>, chame a variável <code translate="no" dir="ltr">trickFunction</code> como se ela fosse uma função.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = trick
+    trick()
+    trickFunction()
+}
+
+val trick = {
+    println(&#34;No treats!&#34;)
+}
+</code></pre>
+<ol type="1" start="7">
+<li>Execute o código. A função é chamada duas vezes: uma para a chamada de função <code translate="no" dir="ltr">trick()</code> e outra para a <code translate="no" dir="ltr">trickFunction()</code>.</li>
+</ol>
+<pre translate="no" dir="ltr">No treats!
+No treats!
+</pre>
+<p>As expressões lambda permitem criar variáveis que armazenam funções, fazer a chamada delas como funções e as armazenar em outras variáveis que podem ser chamadas como funções.</p>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Usar funções como um tipo de dado" duration="0" step="3">
+
+          <h2 class="step-title" id="3" data-text="Usar funções como um tipo de dado" tabindex="-1">
+              4. Usar funções como um tipo de dado
+          </h2>
+          <p>Você aprendeu em um codelab anterior que o Kotlin tem inferência de tipo. Ao declarar uma variável, geralmente não é necessário especificar explicitamente o tipo. No exemplo anterior, o compilador Kotlin conseguiu inferir que o valor de <code translate="no" dir="ltr">trick</code> era uma função. No entanto, se você quer especificar o tipo de parâmetro de função ou retorno, precisa saber a sintaxe para expressar os tipos de função. Os tipos de função consistem em um conjunto de parênteses com uma lista de parâmetros opcional, o símbolo <code translate="no" dir="ltr">-&gt;</code> e um tipo de retorno. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="5608ac5e471b424b.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/5608ac5e471b424b_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>O tipo de dado da variável <code translate="no" dir="ltr">trick</code> que você declarou anteriormente seria <code translate="no" dir="ltr">() -&gt; Unit</code>. Os parênteses estão vazios porque a função não tem parâmetros. O tipo de retorno é <code translate="no" dir="ltr">Unit</code>, porque a função não retorna nada. Se você tivesse uma função que usasse dois parâmetros <code translate="no" dir="ltr">Int</code> e retornasse um <code translate="no" dir="ltr">Int</code>, o tipo de dado dela seria <code translate="no" dir="ltr">(Int, Int) -&gt; Int</code>.</p>
+<p>Declare outra função com uma expressão lambda que especifique explicitamente o tipo da função:</p>
+<ol type="1">
+<li>Depois da variável <code translate="no" dir="ltr">trick</code>, declare uma variável chamada <code translate="no" dir="ltr">treat</code> igual a uma expressão lambda com um corpo que mostra a mensagem <code translate="no" dir="ltr">"Have a treat!"</code> ("Pegue um doce!").</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val trick = {
+    println(&#34;No treats!&#34;)
+}
+
+val treat = {
+    println(&#34;Have a treat!&#34;)
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Especifique o tipo de dado da variável <code translate="no" dir="ltr">treat</code> como <code translate="no" dir="ltr">() -&gt; Unit</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val treat: () -&gt; Unit = {
+    println(&#34;Have a treat!&#34;)
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Na função <code translate="no" dir="ltr">main()</code>, chame a <code translate="no" dir="ltr">treat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val trickFunction = trick
+    trick()
+    trickFunction()
+    treat()
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Execute o código. A função <code translate="no" dir="ltr">treat()</code> se comporta como a <code translate="no" dir="ltr">trick()</code>. As duas variáveis têm o mesmo tipo de dado, mesmo que apenas a variável <code translate="no" dir="ltr">treat</code> o declare explicitamente.</li>
+</ol>
+<pre translate="no" dir="ltr">No treats!
+No treats!
+Have a treat!
+</pre>
+<h2 is-upgraded id="use-a-function-as-a-return-type" data-text="Usar uma função como um tipo de retorno" tabindex="-1">Usar uma função como um tipo de retorno</h2>
+<p>Uma função é um tipo de dado e, por isso, pode ser usada como qualquer outro. Você pode até mesmo retornar funções de outras funções. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="f16dd6ca0c1588f5.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f56dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/f16dd6ca0c1588f5_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Crie uma função que retorne outra.</p>
+<ol type="1">
+<li>Exclua o código da função <code translate="no" dir="ltr">main()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Após a função <code translate="no" dir="ltr">main()</code>, defina uma <code translate="no" dir="ltr">trickOrTreat()</code> que aceite um parâmetro <code translate="no" dir="ltr">isTrick</code> do tipo <code translate="no" dir="ltr">Boolean</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+
+}
+
+fun trickOrTreat(isTrick: Boolean): () -&gt; Unit {
+}
+
+val trick = {
+    println(&#34;No treats!&#34;)
+}
+
+val treat = {
+    println(&#34;Have a treat!&#34;)
+}
+</code></pre>
+<ol type="1" start="3">
+<li>No corpo da função <code translate="no" dir="ltr">trickOrTreat()</code>, adicione uma instrução <code translate="no" dir="ltr">if</code> que retorne a função <code translate="no" dir="ltr">trick()</code> caso <code translate="no" dir="ltr">isTrick</code> seja <code translate="no" dir="ltr">true</code> e a função <code translate="no" dir="ltr">treat()</code> caso <code translate="no" dir="ltr">isTrick</code> seja false.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun trickOrTreat(isTrick: Boolean): () -&gt; Unit {
+    if (isTrick) {
+        return trick
+    } else {
+        return treat
+    }
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Na função <code translate="no" dir="ltr">main()</code>, crie uma variável chamada <code translate="no" dir="ltr">treatFunction</code> e a atribua ao resultado da chamada de <code translate="no" dir="ltr">trickOrTreat()</code>, transmitindo <code translate="no" dir="ltr">false</code> para o parâmetro <code translate="no" dir="ltr">isTrick</code>. Em seguida, crie uma segunda variável, chamada <code translate="no" dir="ltr">trickFunction</code>, e a atribua ao resultado da chamada de <code translate="no" dir="ltr">trickOrTreat()</code>, desta vez transmitindo <code translate="no" dir="ltr">true</code> para o parâmetro <code translate="no" dir="ltr">isTrick</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+}
+</code></pre>
+<ol type="1" start="5">
+<li>Chame <code translate="no" dir="ltr">treatFunction()</code> e depois <code translate="no" dir="ltr">trickFunction()</code> na próxima linha.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="6">
+<li>Execute o código. Você verá a resposta de cada função. Mesmo que não tenha chamado as funções <code translate="no" dir="ltr">trick()</code> ou <code translate="no" dir="ltr">treat()</code> diretamente, elas ainda podem ser chamadas, já que você armazenou os valores de retorno cada vez que chamou a função <code translate="no" dir="ltr">trickOrTreat()</code> e usou as variáveis <code translate="no" dir="ltr">trickFunction</code> e <code translate="no" dir="ltr">treatFunction</code> para chamar as funções.</li>
+</ol>
+<pre translate="no" dir="ltr">Have a treat!
+No treats!
+</pre>
+<p>Agora, você sabe como as funções podem retornar outras funções. Você também pode transmitir uma função como argumento para outra. Talvez você queira fornecer algum comportamento personalizado para que a função <code translate="no" dir="ltr">trickOrTreat()</code> faça algo além de retornar uma das duas strings. Uma função que usa outra como argumento permite transmitir uma função diferente sempre que ela é chamada.</p>
+<h2 is-upgraded id="pass-a-function-to-another-function-as-an-argument" data-text="Transmitir uma função para outra como argumento" tabindex="-1"><strong>Transmitir uma função para outra como argumento</strong></h2>
+<p>Em algumas partes do mundo que celebram o Halloween, as crianças recebem trocados em vez de doces, ou recebem as duas coisas. Você vai modificar a função <code translate="no" dir="ltr">trickOrTreat()</code> para permitir que um presente diferente, representado por uma função, seja fornecido como argumento.</p>
+<p>A função que <code translate="no" dir="ltr">trickOrTreat()</code> usa como parâmetro também precisa usar um parâmetro próprio. Ao declarar tipos de função, os parâmetros não são rotulados. Você só precisa especificar os tipos de dados de cada parâmetro, separados por vírgula. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="8372d3b83d539fac.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/8372d3b83d539fac_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Quando você programa uma expressão lambda para uma função que usa um parâmetro, os parâmetros recebem nomes na ordem em que ocorrem. Os nomes dos parâmetros são listados depois das chaves iniciais, e cada nome é separado por uma vírgula. Uma seta (<code translate="no" dir="ltr">-&gt;</code>) separa os nomes dos parâmetros do corpo da função. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="938d2adf25172873.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf251728736dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/938d2adf25172873_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Atualize a <code translate="no" dir="ltr">trickOrTreat()</code> para usar uma função como parâmetro:</p>
+<ol type="1">
+<li>Depois do parâmetro <code translate="no" dir="ltr">isTrick</code>, adicione um <code translate="no" dir="ltr">extraTreat</code> do tipo <code translate="no" dir="ltr">(Int) -&gt; String</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -&gt; String): () -&gt; Unit {
+</code></pre>
+<ol type="1" start="2">
+<li>No bloco <code translate="no" dir="ltr">else</code>, antes da instrução <code translate="no" dir="ltr">return</code>, chame <code translate="no" dir="ltr">println()</code>, transmitindo uma chamada para a função <code translate="no" dir="ltr">extraTreat()</code>. Transmita <code translate="no" dir="ltr">5</code> na chamada para <code translate="no" dir="ltr">extraTreat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -&gt; String): () -&gt; Unit {
+    if (isTrick) {
+        return trick
+    } else {
+        println(extraTreat(5))
+        return treat
+    }
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Agora, ao chamar <code translate="no" dir="ltr">trickOrTreat()</code>, você precisa definir uma função com uma expressão lambda e a transmitir ao parâmetro <code translate="no" dir="ltr">extraTreat</code>. Na função <code translate="no" dir="ltr">main()</code>, antes das chamadas para a <code translate="no" dir="ltr">trickOrTreat()</code>, adicione uma <code translate="no" dir="ltr">coins()</code>. A função <code translate="no" dir="ltr">coins()</code> dá ao parâmetro <code translate="no" dir="ltr">Int</code> o nome <code translate="no" dir="ltr">quantity</code> e retorna uma <code translate="no" dir="ltr">String</code>. Perceba a ausência da palavra-chave <code translate="no" dir="ltr">return</code>, que não pode ser usada em expressões lambda. Em vez disso, o resultado da última expressão na função vai se tornar o valor de retorno.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val coins: (Int) -&gt; String = { quantity -&gt;
+        &#34;$quantity quarters&#34;
+    }
+
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Depois da função <code translate="no" dir="ltr">coins()</code>, adicione uma <code translate="no" dir="ltr">cupcake()</code>, conforme mostrado. Nomeie a <code translate="no" dir="ltr">quantity</code> de parâmetros <code translate="no" dir="ltr">Int</code> e a separe do corpo da função usando o operador <code translate="no" dir="ltr">-&gt;</code>. Você já pode transmitir a função <code translate="no" dir="ltr">coins()</code> ou <code translate="no" dir="ltr">cupcake()</code> para a <code translate="no" dir="ltr">trickOrTreat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val coins: (Int) -&gt; String = { quantity -&gt;
+        &#34;$quantity quarters&#34;
+    }
+
+    val cupcake: (Int) -&gt; String = { quantity -&gt;
+        &#34;Have a cupcake!&#34;
+    }
+
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="5">
+<li>Na função <code translate="no" dir="ltr">cupcake()</code>, remova o parâmetro <code translate="no" dir="ltr">quantity</code> e o símbolo <code translate="no" dir="ltr">-&gt;</code>. Eles não são usados, então podem ser omitidos.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val cupcake: (Int) -&gt; String = {
+    &#34;Have a cupcake!&#34;
+}
+</code></pre>
+<aside class="special"><p><strong>Observação</strong>: na função <code translate="no" dir="ltr">coins()</code>, o parâmetro <code translate="no" dir="ltr">Int</code> é denominado <code translate="no" dir="ltr">quantity</code>. No entanto, ele pode receber qualquer nome, desde que o parâmetro e a variável na string tenham o mesmo nome.</p>
+</aside>
+<ol type="1" start="6">
+<li>Atualize as chamadas para a função <code translate="no" dir="ltr">trickOrTreat()</code>. Para a primeira chamada, quando <code translate="no" dir="ltr">isTrick</code> for <code translate="no" dir="ltr">false</code>, transmita a função <code translate="no" dir="ltr">coins()</code>. Para a segunda chamada, quando <code translate="no" dir="ltr">isTrick</code> for <code translate="no" dir="ltr">true</code>, transmita a função <code translate="no" dir="ltr">cupcake()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val coins: (Int) -&gt; String = { quantity -&gt;
+        &#34;$quantity quarters&#34;
+    }
+
+    val cupcake: (Int) -&gt; String = {
+        &#34;Have a cupcake!&#34;
+    }
+
+    val treatFunction = trickOrTreat(false, coins)
+    val trickFunction = trickOrTreat(true, cupcake)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="7">
+<li>Execute o código. A função <code translate="no" dir="ltr">extraTreat()</code> só é chamada quando o parâmetro <code translate="no" dir="ltr">isTrick</code> é definido como um argumento <code translate="no" dir="ltr">false</code>. Então, a saída inclui cinco moedas de 25 centavos, mas nenhum cupcake.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+No treats!
+</pre>
+<h2 is-upgraded id="nullable-function-types" data-text="Tipos de função anuláveis" tabindex="-1">Tipos de função anuláveis</h2>
+<p>Assim como outros tipos de dados, os tipos de função podem ser declarados como anuláveis. Nesses casos, uma variável pode conter uma função ou ser <code translate="no" dir="ltr">null</code>.</p>
+<p>Para declarar uma função como anulável, coloque o tipo de função entre parênteses, com um símbolo <code translate="no" dir="ltr">?</code> depois do parêntese final. Por exemplo, se você quiser tornar o tipo <code translate="no" dir="ltr">() -&gt; String</code> anulável, ele precisa ser declarado como um tipo <code translate="no" dir="ltr">(() -&gt; String)?</code>. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="c8a004fbdc7469d.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/c8a004fbdc7469d_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Torne o parâmetro <code translate="no" dir="ltr">extraTreat</code> anulável para que não seja necessário fornecer uma função <code translate="no" dir="ltr">extraTreat()</code> sempre que chamar a <code translate="no" dir="ltr">trickOrTreat()</code>:</p>
+<ol type="1">
+<li>Mude o tipo de parâmetro <code translate="no" dir="ltr">extraTreat</code> para <code translate="no" dir="ltr">(() -&gt; String)?</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -&gt; String)?): () -&gt; Unit {
+</code></pre>
+<ol type="1" start="2">
+<li>Modifique a chamada da função <code translate="no" dir="ltr">extraTreat()</code> para usar uma instrução <code translate="no" dir="ltr">if</code> e chamar a função apenas se ela não for nula. A função <code translate="no" dir="ltr">trickOrTreat()</code> agora terá esta aparência:</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -&gt; String)?): () -&gt; Unit {
+    if (isTrick) {
+        return trick
+    } else {
+        if (extraTreat != null) {
+            println(extraTreat(5))
+        }
+        return treat
+    }
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Remova a função <code translate="no" dir="ltr">cupcake()</code> e substitua o argumento <code translate="no" dir="ltr">cupcake</code> por <code translate="no" dir="ltr">null</code> na segunda chamada para a função <code translate="no" dir="ltr">trickOrTreat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val coins: (Int) -&gt; String = { quantity -&gt;
+        &#34;$quantity quarters&#34;
+    }
+
+    val treatFunction = trickOrTreat(false, coins)
+    val trickFunction = trickOrTreat(true, null)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="4">
+<li>Execute o código. A saída não será modificada. Agora que você pode declarar tipos de função como anuláveis, não é mais necessário transmitir uma função para o parâmetro <code translate="no" dir="ltr">extraTreat</code>.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+No treats!
+</pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Programar expressões lambda com sintaxe abreviada" duration="0" step="4">
+
+          <h2 class="step-title" id="4" data-text="Programar expressões lambda com sintaxe abreviada" tabindex="-1">
+              5. Programar expressões lambda com sintaxe abreviada
+          </h2>
+          <p>As expressões lambda oferecem várias maneiras de deixar seu código mais conciso. Algumas delas vão aparecer nesta seção, já que a maioria das expressões lambda que você encontra e programa têm sintaxe abreviada.</p>
+<h2 is-upgraded id="omit-parameter-name" data-text="Omitir o nome do parâmetro" tabindex="-1">Omitir o nome do parâmetro</h2>
+<p>Ao programar a função <code translate="no" dir="ltr">coins()</code>, você declarou explicitamente o nome <code translate="no" dir="ltr">quantity</code> para o parâmetro <code translate="no" dir="ltr">Int</code> da função. No entanto, como você viu com a função <code translate="no" dir="ltr">cupcake()</code>, é possível omitir totalmente o nome do parâmetro. Quando uma função tem um único parâmetro e você não fornece um nome, o Kotlin atribui o nome <code translate="no" dir="ltr">it</code> implicitamente. Assim, você pode omitir o nome do parâmetro e o símbolo <code translate="no" dir="ltr">-&gt;</code>, deixando suas expressões lambda mais concisas. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="332ea7bade5062d6.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d66dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/332ea7bade5062d6_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Atualize a função <code translate="no" dir="ltr">coins()</code> para usar a sintaxe abreviada para parâmetros:</p>
+<ol type="1">
+<li>Na função <code translate="no" dir="ltr">coins()</code>, remova o nome do parâmetro <code translate="no" dir="ltr">quantity</code> e o símbolo <code translate="no" dir="ltr">-&gt;</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val coins: (Int) -&gt; String = {
+    &#34;$quantity quarters&#34;
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Mude o modelo de string <code translate="no" dir="ltr">"$quantity quarters"</code> para se referir ao parâmetro único usando <code translate="no" dir="ltr">$it</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val coins: (Int) -&gt; String = {
+    &#34;$it quarters&#34;
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Execute o código. O Kotlin reconhece o nome do parâmetro <code translate="no" dir="ltr">it</code> do <code translate="no" dir="ltr">Int</code> e ainda mostra o número de moedas de 25 centavos.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+No treats!
+</pre>
+<h2 is-upgraded id="pass-a-lambda-expression-directly-into-a-function" data-text="Transmitir uma expressão lambda diretamente para uma função" tabindex="-1">Transmitir uma expressão lambda diretamente para uma função</h2>
+<p>No momento, a função <code translate="no" dir="ltr">coins()</code> é usada apenas em um lugar. E se você pudesse simplesmente transmitir uma expressão lambda para a função <code translate="no" dir="ltr">trickOrTreat()</code> sem a necessidade de criar uma variável?</p>
+<p>As expressões lambda são simplesmente literais de função, assim como <code translate="no" dir="ltr">0</code> é um literal de número inteiro ou <code translate="no" dir="ltr">"Hello"</code> é um literal de string. Você pode transmitir uma expressão lambda diretamente para uma chamada de função. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="39dc1086e2471ffc.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc6dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/39dc1086e2471ffc_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Modifique o código para remover a variável <code translate="no" dir="ltr">coins</code>:</p>
+<ol type="1">
+<li>Mova a expressão lambda para que ela seja transmitida diretamente para a função <code translate="no" dir="ltr">trickOrTreat()</code> na chamada. Você também pode condensar a expressão lambda em uma única linha.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val coins: (Int) -&gt; String = {
+        &#34;$it quarters&#34;
+    }
+    val treatFunction = trickOrTreat(false, { &#34;$it quarters&#34; })
+    val trickFunction = trickOrTreat(true, null)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Remova a variável <code translate="no" dir="ltr">coins</code>, que não será mais usada.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val treatFunction = trickOrTreat(false, { &#34;$it quarters&#34; })
+    val trickFunction = trickOrTreat(true, null)
+    treatFunction()
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Execute o código. A compilação e execução ainda funcionam como esperado.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+No treats!
+</pre>
+<h2 is-upgraded id="use-trailing-lambda-syntax" data-text="Usar a sintaxe de lambda final" tabindex="-1"><strong>Usar a sintaxe de lambda final</strong></h2>
+<p>É possível usar outra opção abreviada para programar lambdas quando um tipo de função é o último parâmetro de uma função. Nesse caso, você pode colocar a expressão lambda após os parênteses para chamar a função. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="3ee3176d612b54.png" style="width: 624.00px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b546dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/3ee3176d612b54_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Isso deixa seu código mais legível, porque ele separa a expressão lambda dos outros parâmetros, mas não muda o que o código faz.</p>
+<p>Atualize o código para usar a sintaxe de lambda final:</p>
+<ol type="1">
+<li>Na variável <code translate="no" dir="ltr">treatFunction</code>, mova a expressão lambda <code translate="no" dir="ltr">{"$it quarters"}</code> após os parênteses na chamada para <code translate="no" dir="ltr">trickOrTreat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">val treatFunction = trickOrTreat(false) { &#34;$it quarters&#34; }
+</code></pre>
+<ol type="1" start="2">
+<li>Execute o código. Tudo continua funcionando.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+No treats!
+</pre>
+<aside class="special"><p><strong>Observação</strong>: as funções de composição usadas para declarar a IU utilizam funções como parâmetros e geralmente são chamadas com a sintaxe de lambda final.</p>
+</aside>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Usar a função repeat()" duration="0" step="5">
+
+          <h2 class="step-title" id="5" data-text="Usar a função repeat()" tabindex="-1">
+              6. Usar a função repeat()
+          </h2>
+          <p>Quando uma função retorna outra <em>ou</em> usa uma função como argumento, ela é chamada de função de ordem superior. A função <code translate="no" dir="ltr">trickOrTreat()</code> é um exemplo de função de ordem superior, já que usa uma função do tipo <code translate="no" dir="ltr">((Int) -&gt; String)?</code> como parâmetro e retorna outra do tipo <code translate="no" dir="ltr">() -&gt; Unit</code>. O Kotlin oferece várias funções de ordem superior úteis que podem ser aproveitadas com seu novo conhecimento sobre lambdas.</p>
+<p>A função <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/repeat.html" target="_blank"><code translate="no" dir="ltr">repeat()</code></a> é uma dessas funções de ordem superior. A <code translate="no" dir="ltr">repeat()</code> é uma maneira concisa de expressar uma repetição <code translate="no" dir="ltr">for</code> com funções. Você vai usar essa e outras funções de ordem superior com frequência nas próximas unidades. A função <code translate="no" dir="ltr">repeat()</code> tem esta assinatura de função:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">repeat(times: Int, action: (Int) -&gt; Unit)
+</code></pre>
+<p>O parâmetro <code translate="no" dir="ltr">times</code> é o número de vezes que a ação precisa ocorrer. O parâmetro <code translate="no" dir="ltr">action</code> é uma função que usa um único parâmetro <code translate="no" dir="ltr">Int</code> e retorna um tipo <code translate="no" dir="ltr">Unit</code>. O parâmetro <code translate="no" dir="ltr">Int</code> da função <code translate="no" dir="ltr">action</code> é o número de vezes que a ação foi executada até o momento, como um argumento <code translate="no" dir="ltr">0</code> na primeira iteração ou um <code translate="no" dir="ltr">1</code> na segunda. Você pode usar a função <code translate="no" dir="ltr">repeat()</code> para repetir o código um número específico de vezes, semelhante a uma repetição <code translate="no" dir="ltr">for</code>. A sintaxe está ilustrada nesta imagem:</p>
+<p class="image-container"><img alt="519a2e0f5d02687.png" style="width: 566.92px" src="../static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d026876dd3.png?hl=pt-br" srcset="https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_36.png?hl=pt-br 36w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_48.png?hl=pt-br 48w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_72.png?hl=pt-br 72w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_96.png?hl=pt-br 96w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_480.png?hl=pt-br 480w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_720.png?hl=pt-br 720w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_856.png?hl=pt-br 856w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_960.png?hl=pt-br 960w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_1440.png?hl=pt-br 1440w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_1920.png?hl=pt-br 1920w,https://developer.android.com/static/codelabs/basic-android-kotlin-compose-function-types-and-lambda/img/519a2e0f5d02687_2880.png?hl=pt-br 2880w" sizes="(max-width: 840px) 100vw, 856px"></p>
+<p>Em vez de chamar a função <code translate="no" dir="ltr">trickFunction()</code> apenas uma vez, você pode fazer isso várias vezes com a função <code translate="no" dir="ltr">repeat()</code>.</p>
+<p>Atualize seu código de doces ou travessuras para ver a <code translate="no" dir="ltr">repeat()</code> em ação:</p>
+<ol type="1">
+<li>Na função <code translate="no" dir="ltr">main()</code>, chame a <code translate="no" dir="ltr">repeat()</code> entre as chamadas para <code translate="no" dir="ltr">treatFunction()</code> e <code translate="no" dir="ltr">trickFunction()</code>. Transmita <code translate="no" dir="ltr">4</code> para o parâmetro <code translate="no" dir="ltr">times</code> e use a sintaxe de lambda final para a função <code translate="no" dir="ltr">action</code>. Não é necessário fornecer um nome para o parâmetro <code translate="no" dir="ltr">Int</code> da expressão lambda.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val treatFunction = trickOrTreat(false) { &#34;$it quarters&#34; }
+    val trickFunction = trickOrTreat(true, null)
+    treatFunction()
+    trickFunction()
+    repeat(4) {
+
+    }
+}
+</code></pre>
+<ol type="1" start="2">
+<li>Mova a chamada para a função <code translate="no" dir="ltr">treatFunction()</code> na expressão lambda da função <code translate="no" dir="ltr">repeat()</code>.</li>
+</ol>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">fun main() {
+    val treatFunction = trickOrTreat(false) { &#34;$it quarters&#34; }
+    val trickFunction = trickOrTreat(true, null)
+    repeat(4) {
+        treatFunction()
+    }
+    trickFunction()
+}
+</code></pre>
+<ol type="1" start="3">
+<li>Execute o código. A string <code translate="no" dir="ltr">"Have a treat"</code> precisa ser mostrada quatro vezes.</li>
+</ol>
+<pre translate="no" dir="ltr">5 quarters
+Have a treat!
+Have a treat!
+Have a treat!
+Have a treat!
+No treats!
+</pre>
+
+        </google-codelab-step>
+
+        <google-codelab-step label="Conclusão" duration="0" step="6">
+
+          <h2 class="step-title" id="6" data-text="Conclusão" tabindex="-1">
+              7. Conclusão
+          </h2>
+          <p>Parabéns! Você aprendeu as noções básicas dos tipos de função e expressões lambda. Conhecer bem esses conceitos ajuda no aprendizado da linguagem Kotlin. O uso de tipos de função, funções de ordem superior e sintaxe abreviada também deixa o código mais conciso e fácil de ler.</p>
+<h2 is-upgraded id="summary" data-text="Resumo" tabindex="-1"><strong>Resumo</strong></h2>
+<ul>
+<li>As funções no Kotlin são construções de primeira classe e podem ser tratadas como tipos de dados.</li>
+<li>As expressões lambda fornecem uma sintaxe abreviada para programar funções.</li>
+<li>É possível transmitir tipos de função para outras funções.</li>
+<li>Você pode retornar um tipo de função de outra função.</li>
+<li>Uma expressão lambda retorna o valor da última expressão.</li>
+<li>Se um rótulo de parâmetro for omitido em uma expressão lambda com um único parâmetro, ele será referenciado com o identificador <code translate="no" dir="ltr">it</code>.</li>
+<li>É possível programar lambdas in-line sem um nome de variável.</li>
+<li>Se o último parâmetro de uma função for um tipo de função, você vai poder usar a sintaxe de lambda final para mover a expressão lambda após o último parêntese ao chamar uma função.</li>
+<li>As funções de ordem superior são aquelas que usam outras funções como parâmetros ou retornam uma função.</li>
+<li>A função <code translate="no" dir="ltr">repeat()</code> é de ordem superior e funciona de maneira semelhante a uma repetição <code translate="no" dir="ltr">for</code>.</li>
+</ul>
+<h2 is-upgraded id="learn-more" data-text="Saiba mais" tabindex="-1"><strong>Saiba mais</strong></h2>
+<ul>
+<li><a href="https://kotlinlang.org/docs/lambdas.html" target="_blank">Funções de ordem superior e lambdas</a> (link em inglês)</li>
+</ul>
+
+        </google-codelab-step>
+
+    </google-codelab>
+
+  
+
+  
+</div>
+
+  
+
+  
+    
+    
+    
+  
+
+  
+  
+</article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Exceto em caso de indicação contrária, o conteúdo desta página é licenciado de acordo com a <a href="https://creativecommons.org/licenses/by/4.0/">Licença de atribuição 4.0 do Creative Commons</a>, e as amostras de código são licenciadas de acordo com a <a href="https://www.apache.org/licenses/LICENSE-2.0">Licença Apache 2.0</a>. Para mais detalhes, consulte as <a href="https://developers.google.com/site-policies?hl=pt-br">políticas do site do Google Developers</a>. Java é uma marca registrada da Oracle e/ou afiliadas.</p>
+  
+</devsite-content-footer>
+
+
+<devsite-notification
+>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  
+  
+    <template class="devsite-content-data-template">
+      [[["Fácil de entender","easyToUnderstand","thumb-up"],["Meu problema foi resolvido","solvedMyProblem","thumb-up"],["Outro","otherUp","thumb-up"]],[["Não contém as informações de que eu preciso","missingTheInformationINeed","thumb-down"],["Muito complicado / etapas demais","tooComplicatedTooManySteps","thumb-down"],["Desatualizado","outOfDate","thumb-down"],["Problema na tradução","translationIssue","thumb-down"],["Problema com as amostras / o código","samplesCodeIssue","thumb-down"],["Outro","otherDown","thumb-down"]],[],[],[]]
+    </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+
+<nav class="devsite-footer-promos nocontent" aria-label="Promoções">
+  <ul class="devsite-footer-promos-list">
+    
+    <li class="devsite-footer-promo">
+      <a href="http://x.com/AndroidDev"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+       
+         data-label="Footer X Promo"
+       >
+        
+        
+        <picture>
+          
+          <source class="devsite-dark-theme"
+                  srcset="https://developer.android.com/_static/android/images/logo-x_dt.svg?hl=pt-br"
+                  media="(prefers-color-scheme: dark)"
+                  loading="lazy"
+                  alt="X">
+          
+          <img class="devsite-footer-promo-icon"
+                src="https://developer.android.com/_static/android/images/logo-x.svg?hl=pt-br"
+                loading="lazy"
+                alt="X">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          X
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Follow @AndroidDev on X</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="http://www.youtube.com/user/androiddevelopers?hl=pt-br"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+       
+         data-label="Footer YouTube Promo"
+       >
+        
+        
+        <picture>
+          
+          <source class="devsite-dark-theme"
+                  srcset="https://developer.android.com/_static/android/images/logo-youtube_dt.svg?hl=pt-br"
+                  media="(prefers-color-scheme: dark)"
+                  loading="lazy"
+                  alt="YouTube">
+          
+          <img class="devsite-footer-promo-icon"
+                src="../../www.gstatic.com/images/icons/material/product/2x/youtube_48dp.png"
+                loading="lazy"
+                alt="YouTube">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          YouTube
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Check out Android Developers on YouTube</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="http://www.linkedin.com/showcase/androiddev"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+       
+         data-label="Footer LinkedIn Promo"
+       >
+        
+        
+        <picture>
+          
+          <source class="devsite-dark-theme"
+                  srcset="https://developer.android.com/_static/android/images/logo-linkedin_dt.svg?hl=pt-br"
+                  media="(prefers-color-scheme: dark)"
+                  loading="lazy"
+                  alt="LinkedIn">
+          
+          <img class="devsite-footer-promo-icon"
+                src="https://developer.android.com/_static/android/images/logo-linkedin.svg?hl=pt-br"
+                loading="lazy"
+                alt="LinkedIn">
+        </picture>
+        
+        <span class="devsite-footer-promo-label">
+          LinkedIn
+        </span>
+      </a>
+      <div class="devsite-footer-promo-description">Connect with the Android Developers community on LinkedIn</div>
+    </li>
+    
+  </ul>
+</nav>
+
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Links do rodapé">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">More Android</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://www.android.com/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Android
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://www.android.com/enterprise/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Android for Enterprise
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://www.android.com/security-center/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Security
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://source.android.com/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+          
+            Source
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/news"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+            
+          
+            News
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://android-developers.googleblog.com/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 6)"
+            >
+            
+          
+            Blog
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/podcasts"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 7)"
+            >
+            
+              
+              
+            
+          
+            Podcasts
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Discover</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/games"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Gaming
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/ml"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Machine Learning
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/health-and-fitness"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Health & Fitness
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/media"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+          
+            Camera & Media
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/privacy"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+            
+          
+            Privacidade
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/training/connectivity/5g"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 6)"
+            >
+            
+              
+              
+            
+          
+            5G
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Android Devices</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/large-screens"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Large screens
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/wear"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Wear OS
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/chrome-os"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            ChromeOS devices
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/cars"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+          
+            Android for cars
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/tv"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+            
+              
+              
+            
+          
+            Android TV
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Releases</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/14"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Android 14
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/13"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Android 13
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/12"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Android 12
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/11"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+          
+            Android 11
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/10"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+            
+          
+            Android 10
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/pie"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 6)"
+            >
+            
+          
+            Pie
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/oreo"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 7)"
+            >
+            
+          
+            Oreo
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/about/versions/nougat"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 8)"
+            >
+            
+              
+              
+            
+          
+            Nougat
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Documentation and Downloads</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/studio/intro"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Android Studio guide
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/guide"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Developers guides
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/reference"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Referência da API
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/studio"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+          
+            Download Studio
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.android.com/ndk"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+            
+              
+              
+            
+          
+            Android NDK
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Suporte</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://issuetracker.google.com/issues/new?component=190923&amp;template=841312"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Report platform bug
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://issuetracker.google.com/issues/new?component=192697"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Report documentation bug
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="http://support.google.com/googleplay/android-developer"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Google Play support
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://g.co/userresearch/androiddeveloperfooter"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            Join research studies
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Outros sites do Google Developers">
+    <a href="https://developers.google.com/?hl=pt-br"
+       class="devsite-footer-sites-logo-link gc-analytics-event"
+       data-category="Site-Wide Custom Events"
+       data-label="Footer Google Developers Link">
+      <picture>
+        
+        <source srcset="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup-google-for-developers-dark-theme.svg"
+                media="(prefers-color-scheme: none)"
+                class="devsite-dark-theme"
+                loading="lazy"
+                alt="Google Developers">
+        
+        <img class="devsite-footer-sites-logo"
+             src="https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup-google-for-developers.svg"
+             loading="lazy"
+             alt="Google Developers">
+      </picture>
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="http://developer.android.com/?hl=pt-br"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Android Link"
+         
+         >
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="http://developer.chrome.com/home?hl=pt-br"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Chrome Link"
+         
+         >
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="http://firebase.google.com/?hl=pt-br"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Firebase Link"
+         
+         >
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="http://cloud.google.com/?hl=pt-br"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Google Cloud Platform Link"
+         
+         >
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="http://developers.google.com/products/?hl=pt-br"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer All products Link"
+         
+         >
+          All products
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Links utilitários">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="http://policies.google.com/privacy?hl=pt-br"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link"
+         >
+          Privacidade
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="https://developer.android.com/license?hl=pt-br"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer License link"
+         >
+          License
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="https://developer.android.com/distribute/marketing-tools/brand-guidelines?hl=pt-br"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Brand guidelines link"
+         >
+          Brand guidelines
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 glue-cookie-notification-bar-control">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="#"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Manage cookies link"
+         
+           aria-hidden="true"
+         >
+          Manage cookies
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">Get news and tips by email</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="https://developer.android.com/updates?hl=pt-br"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Subscribe link"
+         >
+          Subscribe
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel></devsite-panel>
+        
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar></devsite-snackbar>
+    <devsite-tooltip ></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics>
+      
+        <script type="application/json" analytics>[{&#34;dimensions&#34;: {&#34;dimension3&#34;: false, &#34;dimension6&#34;: &#34;pt-br&#34;, &#34;dimension5&#34;: &#34;pt-br&#34;, &#34;dimension11&#34;: false, &#34;dimension1&#34;: &#34;Signed out&#34;}, &#34;gaid&#34;: &#34;UA-5831155-1&#34;, &#34;metrics&#34;: {&#34;ratings_count&#34;: &#34;metric2&#34;, &#34;ratings_value&#34;: &#34;metric1&#34;}, &#34;purpose&#34;: 0}]</script>
+<script type="application/json" tag-management>{&#34;at&#34;: &#34;True&#34;, &#34;ga4&#34;: [{&#34;id&#34;: &#34;G-QFRN08RN6E&#34;, &#34;purpose&#34;: 0}], &#34;ga4p&#34;: [{&#34;id&#34;: &#34;G-QFRN08RN6E&#34;, &#34;purpose&#34;: 0}], &#34;gtm&#34;: [], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;pt-br&#34;, &#34;served&#34;: &#34;pt-br&#34;}, &#34;pageType&#34;: &#34;codelab&#34;, &#34;projectName&#34;: null, &#34;signedIn&#34;: &#34;False&#34;, &#34;tenant&#34;: &#34;android&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
+      
+    </devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+<android-fully-clickable
+    target="
+        .android-case-study .devsite-landing-row-item,
+        .android-grouped-resources .devsite-landing-row-item,
+        .android-grouped-resources-primary .devsite-landing-row-item,
+        .android-grouped-resources-secondary .devsite-landing-row-item,
+        .android-guide-cards .devsite-landing-row-item,
+        .android-illustrated-resources-index .devsite-landing-row-item,
+        .android-illustrated-resources-primary .devsite-landing-row-item,
+        .android-illustrated-resources-secondary .devsite-landing-row-item,
+        .android-illustrated-resources-secondary-small .devsite-landing-row-item,
+        .android-illustrated-resources-tertiary .devsite-landing-row-item,
+        .android-illustrated-resources-tertiary-small .devsite-landing-row-item,
+        .android-promo .devsite-landing-row-item,
+        .android-quick-link,
+        .android-samples .devsite-card-wrapper,
+        .fully-clickable"
+    watch=".android-samples, devsite-content"></android-fully-clickable>
+    <script nonce="/gvlBqO7tqDUPtqYCG9FrWRObbn91o">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    '../../www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/js/app_loader.js', '[3,"pt_br",null,"../js/devsite_app_module.html","https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6","https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android","https://android-dot-devsite-v2-prod.appspot.com/",1,null,["/_pwa/android/manifest.json","https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/favicon.svg","https://www.gstatic.com/devrel-devsite/prod/vb596299fc3b3ecd7c5d7aec475be1a412930b770a5f8d074630a8e7a09f63df6/android/images/lockup.svg","https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700|Google+Sans+Text:400,400italic,500,500italic,600,600italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developer.android.com","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY",null,null,null,["Profiles__enable_recognition_badges","Cloud__enable_legacy_calculator_redirect","MiscFeatureFlags__developers_footer_image","Significatio__enable_by_tenant","MiscFeatureFlags__enable_dark_theme","MiscFeatureFlags__enable_project_variables","MiscFeatureFlags__emergency_css","MiscFeatureFlags__developers_footer_dark_image","Profiles__enable_page_saving","MiscFeatureFlags__enable_variable_operator","Search__enable_dynamic_content_confidential_banner","Profiles__enable_developer_profiles_callout","EngEduTelemetry__enable_engedu_telemetry","MiscFeatureFlags__enable_view_transitions","Search__enable_ai_eligibility_checks","CloudShell__cloud_shell_button","BookNav__enable_tenant_cache_key","Cloud__enable_llm_concierge_chat","Profiles__require_profile_eligibility_for_signin","CloudShell__cloud_code_overflow_menu","Cloud__enable_cloud_facet_chat","Cloud__enable_cloudx_experiment_ids","Cloud__enable_cloudx_ping","Cloud__enable_cloud_shell_fte_user_flow","Analytics__enable_cookie_bar","TpcFeatures__enable_mirror_tenant_redirects","Profiles__enable_public_developer_profiles","MiscFeatureFlags__enable_explain_this_code","Profiles__enable_awarding_url","TpcFeatures__enable_required_headers","Experiments__reqs_query_experiments","Profiles__enable_release_notes_notifications","Cloud__enable_cloud_shell","Concierge__enable_pushui","Search__enable_suggestions_from_borg","Profiles__enable_completecodelab_endpoint","MiscFeatureFlags__enable_firebase_utm","Profiles__enable_profile_collections","Search__enable_page_map","Profiles__enable_dashboard_curated_recommendations","Search__enable_ai_search_summaries","Cloud__enable_cloud_dlp_service","Cloud__enable_free_trial_server_call"],null,null,"AIzaSyBLEMok-5suZ67qRPzx0qUtbnLmyT_kCVE","https://developerscontentserving-pa.googleapis.com/","AIzaSyCM4QpTRSqP5qI4Dvjt4OAScIN8sOUlO-k","https://developerscontentsearch-pa.googleapis.com/",2,4,null,"https://developerprofiles-pa.googleapis.com/",[3,"android","Android Developers","developer.android.com",null,"android-dot-devsite-v2-prod.appspot.com",null,null,[null,1,null,null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],[1,null,null,[1,20],"/recommendations"],null,null,null,[1,null,1],[1,1,null,1,1]],null,[18,null,null,null,null,null,"https://developer.android.com/images/lockup.svg","../images/touchicon-180.html",null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,"https://developer.android.com/images/lockup-dark-theme.svg",[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[6,1,14,15,20,22,23,28,29,37,43],null,[[null,null,1],[1,1]],[[["UA-5831155-1"],["UA-5831155-7"],null,null,["UA-5831155-2"],null,null,[["G-QFRN08RN6E"],null,null,[["G-QFRN08RN6E",1]]],[["UA-5831155-1",1]],null,[["UA-5831155-2",1]],null,1],[[3,2],[4,3],[5,4],[11,8],[6,5],[1,1]],[[2,2],[1,1]]],null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,"android.devsite.google"]]')
+  
+</script>
+    <devsite-a11y-announce></devsite-a11y-announce>
+  </body>
+
+<!-- Mirrored from developer.android.com/codelabs/basic-android-kotlin-compose-function-types-and-lambda?hl=pt-br by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 Oct 2024 10:04:47 GMT -->
+</html>
